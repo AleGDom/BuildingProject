@@ -1,0 +1,132 @@
+---
+
+---
+<header class="">
+	<div class="h-[100svh] flex flex-col gap-16 md:gap-0 md:justify-between relative">
+		<div class="pl-2 md:pl-7">
+			<h1 class="text-[15vw] lg:text-[14rem] text-[#231f20] font-bold">Building</h1>
+			<h2 class="text-[10vw] lg:text-[10rem] text-[#231f20] uppercase">Future</h2>
+		</div>
+		<div style="opacity: 0;" class="absolute h-full w-full pointer-events-none bg-hover">
+			<div class="gradient absolute"></div>
+			<img src="" alt="" class="w-full h-full img">
+		</div>
+		<div class="md:flex justify-between mb-10 w-[95%] mx-auto">
+			<div class="max-w-4xl relative">
+				<nav class=" md:flex flex-wrap">
+					<a href="#" class="item" data-thumb="89-8.jpg">
+						<p class="md:text-center text-3xl ">Glass</p>
+						<p class="md:text-6xl text-[7vw] font-extrabold uppercase">Croissant</p>
+					</a>
+					<a href="#" class="item" data-thumb="nyc.jpg">
+						<p class="md:text-center text-3xl">Sugar</p>
+						<p class="md:text-6xl text-[7vw] font-extrabold uppercase">Donut</p>
+					</a>
+					<a href="#" class="item" data-thumb="1213.jpg">
+						<p class="md:text-center text-3xl">Chocolate</p>
+						<p class="md:text-6xl text-[7vw] font-extrabold uppercase">Cookie</p>
+					</a>
+
+					<a href="#" class="item" data-thumb="1111.jpg">
+						<p class="md:text-center text-3xl">Vanilla</p>
+						<p class="md:text-6xl text-[7vw] font-extrabold uppercase">IceCream</p>
+					</a>
+					
+					
+				</nav>
+			</div>
+			<picture class="relative">
+				<!-- <img src="background.webp" alt="" class="max-w-lg rounded-3xl mini-img"> -->
+				
+			</picture>
+		</div>
+		<div class="absolute bg-image"></div><div class="bg-hover absolute"></div>
+	</div>
+    
+</header>
+
+<style>
+    
+    h1,h2,p{
+		font-family: "sk-modernist";
+		line-height: 1;
+	}
+	.bg-hover{
+		transition: opacity .50s ease-in-out;
+	}
+
+	.bg-image{
+		background-image: url('/background.webp');
+		height: 100%;
+		width: 100%;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		z-index: -2;
+	}
+	.item{
+		
+		padding: 15px;
+		transition: all .25s ease-in-out;
+	}
+	.gradient{
+		inset: 0;
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
+		opacity: 0.5;
+		
+	}
+	.desactive{
+		opacity: .50;
+	}
+	.active{
+		color: white;
+		opacity: 1;
+	}
+	img{
+		object-fit: cover;
+	}
+
+	
+</style>
+<script>
+	const button = document.querySelectorAll('.item');
+	const bg=document.querySelector('.bg-hover');
+	const img = document.querySelector('.img');
+	const mini = document.querySelector('.mini-img');
+	function Visibility(){
+		bg?.setAttribute("style","opacity:1; -moz-opacity:1; filter:alpha(opacity=100)");
+	}
+	function Hidden(){
+		bg?.setAttribute("style","opacity:0; -moz-opacity:0; filter:alpha(opacity=0)");
+		
+	}
+	button.forEach(e=>{
+		e.addEventListener('mouseover',Visibility)
+		e.addEventListener('mouseleave',Hidden)
+
+
+		e.addEventListener('mouseover',()=>{
+			button.forEach(e=>{
+				e.classList.add('desactive')
+			})
+			e.classList.add('active');
+
+			const attribute=e.getAttribute('data-thumb');
+			if(attribute){
+				img?.setAttribute('src',attribute);
+				
+			}
+			
+		})
+		e.addEventListener('mouseleave',()=>{
+			button.forEach(e=>{
+				e.classList.remove('desactive')
+			})
+			e.classList.remove('active');
+		})
+	})
+
+	
+
+
+</script>

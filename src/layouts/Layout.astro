@@ -1,0 +1,66 @@
+---
+import Header from '../components/Sections/Header.astro';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<Header/>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		
+	}
+	@font-face  {
+    font-family: 'Neue Haas Grotesk Text Pro';
+    src: url('/fonts/NHaasGroteskTXPro-75Bd.woff2')  format('woff2');
+    font-style: bold;
+    font-weight: 700
+	}
+	@font-face {
+	font-family: 'Mona Sans';
+	src:
+		url('/fonts/Mona-Sans.woff2') format('woff2 supports variations'),
+		url('/fonts/Mona-Sans.woff2') format('woff2-variations');
+	font-weight: 200 900;
+	font-stretch: 75% 125%;
+	}
+	@font-face {
+    font-family: "sk-modernist";
+    src: url("fonts/Sk-Modernist-Bold.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap
+	}
+	@font-face {
+    font-family: "sk-modernist";
+    src: url("fonts/Sk-Modernist-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap
+	}
+	html {
+		box-sizing: border-box;
+	}
+
+	body{
+		color: #231f20;
+	}
+	
+</style>
